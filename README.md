@@ -1,1 +1,1 @@
-This is a test website for Isabel Trahan
+This is a test site for Isabel Trahan
