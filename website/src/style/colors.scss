@@ -1,0 +1,49 @@
+@import 'util';
+
+
+$theme: (
+    light: (color: white, on-color: black),
+    dark: (color: #222222, on-color: white),
+    page: (color: white, on-color: black),
+    gutter: (color: #dddddd, on-color: black),
+);
+
+/* 
+ * usage example:
+ * div {
+ *     background: color(primary);
+ *     color: on-color(primary);
+ * }
+ * 
+ */
+
+@function color($name) {
+    @return map-get(map-get($theme, $name), 'color');
+}
+
+@function on-color($name) {
+    @return map-get(map-get($theme, $name), 'on-color');
+}
+@function on-color-deemphasis($name) {
+    $c: on-color($name);
+    @if (calc-on($c) == "lighter") { @return lighten($c, 50%); }
+    @else                          { @return darken($c, 50%);  }
+}
+
+// ::-webkit-scrollbar {
+//     width: 8px;
+// }
+// // ::-webkit-scrollbar-track { //track
+// //     background: getColor($theme, primary, medium, background);
+// // }
+// ::-webkit-scrollbar-thumb { //handle
+//     .dark & {
+        
+//     }
+//     background: $attack-gray;
+//     &:hover { background: gray }
+//     border-radius: 8px;
+//     // &:hover {
+//     //     border: 1px solid getColor($theme, primary, light, text)
+//     // }
+// }
