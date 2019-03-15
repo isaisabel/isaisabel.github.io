@@ -27,11 +27,13 @@ export default {
         background: color(page);
         color: on-color(page);
         padding: 0.5in 1in;
-        margin: 25px auto;
+        margin: 25px;
         transition: all ease 0.35s;
         &:hover { 
             box-shadow: 7px 10px 10px 0px rgba(0,0,0,0.2);
             transform: translate(-2px, -3px);
         }
+        white-space: normal;
+        // flex-grow: 0;
     }
 </style>
