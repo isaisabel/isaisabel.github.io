@@ -41,7 +41,8 @@ export default {
             },
         ],
         selectedIndex: 0,
-        mounted: false
+        mounted: false,
+        resizeTracker: 1
     }},
     computed: {
         viewportPos() {
@@ -49,13 +50,18 @@ export default {
             let viewportWidth = this.$el.offsetWidth;
             console.log(viewportWidth)
             let docWidth = viewportWidth / this.documents.length;
-            let offset = (docWidth/2  -(this.selectedIndex * docWidth)) + "px"
+            let viewWidth = document.body.clientWidth;
+            let offset = (viewWidth/4 - (this.selectedIndex * docWidth)) + "px"
             console.log(offset);
-            return { "left": offset }
+            return this.resizeTracker && { "left": offset }
         }
     },
     watch: {},
-    mounted: function() { this.mounted = true;},
+    mounted: function() { 
+        this.mounted = true;
+        window.addEventListener('resize', () => this.resizeTracker++);
+
+    },
     methods: {
         // viewportOffset() {
         //     // compute offset

@@ -23,7 +23,8 @@ export default {
 <style lang="scss">
     @import "@/style/globals.scss";
     .documentWrapper {
-        width: 6in;
+        box-sizing: border-box;
+        width: 50vw;
         background: color(page);
         color: on-color(page);
         padding: 0.5in 1in;
